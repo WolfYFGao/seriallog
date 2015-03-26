@@ -1,0 +1,9 @@
+C:\csharp\SerialLog\SerialLog\obj\Debug\SerialLog.csprojResolveAssemblyReference.cache
+C:\csharp\SerialLog\SerialLog\obj\Debug\SerialLog.FrmSerialPort.resources
+C:\csharp\SerialLog\SerialLog\obj\Debug\SerialLog.Properties.Resources.resources
+C:\csharp\SerialLog\SerialLog\obj\Debug\SerialLog.csproj.GenerateResource.Cache
+C:\csharp\SerialLog\SerialLog\bin\Debug\SerialLog.exe
+C:\csharp\SerialLog\SerialLog\bin\Debug\SerialLog.pdb
+C:\csharp\SerialLog\SerialLog\obj\Debug\SerialLog.exe
+C:\csharp\SerialLog\SerialLog\obj\Debug\SerialLog.pdb
+C:\csharp\SerialLog\SerialLog\obj\Debug\SerialLog.FrmSerialPortConfig.resources
