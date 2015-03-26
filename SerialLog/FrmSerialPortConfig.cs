@@ -23,12 +23,19 @@ namespace SerialLog
             string[] ports = SerialPort.GetPortNames();
             Array.Sort(ports);
             cmbPortName.Items.AddRange(ports);
+            if (ports.Length > 0) {
+                cmbPortName.SelectedIndex = 0;
+            }
+            this.cmbBaudRate.SelectedIndex = 0;
+            this.cmbParity.SelectedIndex = 0;
+            this.cmbDataBits.SelectedIndex = 1;
+            this.cmbStopBits.SelectedIndex = 0;
         }
 
 
         private void btnSaveConfig_Click(object sender, EventArgs e)
         {
-            Program.serialPortPara.PortName = this.cmbPortName.SelectedValue as string;
+            Program.serialPortPara.PortName = this.cmbPortName.SelectedItem as string;
             Debug.WriteLine(this.cmbBaudRate.SelectedItem.ToString());
             Program.serialPortPara.BaudRate = int.Parse(this.cmbBaudRate.SelectedItem.ToString());
             Program.serialPortPara.Print();

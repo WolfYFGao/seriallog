@@ -236,6 +236,7 @@ namespace SerialLog
             {
                 try
                 {
+                    Debug.WriteLine("设置串口参数");
                     comport.PortName = Program.serialPortPara.PortName;
                     comport.BaudRate = Program.serialPortPara.BaudRate;
                     comport.DataBits = 8;
