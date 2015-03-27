@@ -126,7 +126,7 @@ namespace SerialLog
                 //追加的形式添加到文本框末端，并滚动到最后。
                 //this.txt_showinfo.Text = builder.ToString() + this.txt_showinfo.Text;
                 Trace.WriteLine(builder.ToString());
-                HandleShowInfoText(builder.ToString());
+                ShowReceiveData(builder.ToString());
                 builder.Remove(0, builder.Length);
                 HandleReceivedCountText(received_count.ToString());
                 //this.lblReceivedCount.Text = received_count.ToString();
@@ -135,31 +135,28 @@ namespace SerialLog
             {
                 MessageBox.Show(ex.Message);
             }
-            //this.Invoke(new EventHandler(HandleSerialData));
+            this.Invoke(new EventHandler(HandleSerialData));
         }
         void HandleReceivedCountText(string text)
         {
-
+            Action<string> act = (str) =>
+            {
+                this.lblReceivedCount.Text = str;
+            };
+            this.lblReceivedCount.Invoke(act, text);
             //this.lblReceivedCount.Invoke(new deleUpdateContorl(UpdateReceivedCountText), text);
 
         }
-        void UpdateReceivedCountText(string text)
+    
+        void ShowReceiveData(string infotext)
         {
-            this.lblReceivedCount.Text = text;
-
+            Action<string> act = (info) =>
+            {
+                this.txt_dataReceive.Text = this.txt_dataReceive.Text + info;
+            };
+            this.txt_dataReceive.Invoke(act, infotext);
         }
-        void HandleShowInfoText(string infotext)
-        {
 
-
-            //this.txt_showinfo.Invoke(new deleUpdateContorl(UpdateShowInfoText), infotext);
-
-        }
-        void UpdateShowInfoText(string infoText)
-        {
-            this.txt_showinfo.Text = this.txt_showinfo.Text + infoText;
-
-        }
         private void HandleSerialData(object s, EventArgs e)
         {
             //if (bClosing)//如果要关闭串口，则此时不再处理串口数据
@@ -278,31 +275,12 @@ namespace SerialLog
                 MessageBox.Show("串口没有打开，请打开串口！");
                 return;
             }
-            string textToSend = "";
-            int nflag = textToSend.IndexOf("\n");
-            int rflag = textToSend.IndexOf("\r");
-            int iNewline = -1;
-            if (nflag >= 0 && rflag >= 0)
+            string textToSend = this.txt_SendData.Text;
+            if (textToSend.Length <= 0)
             {
-                iNewline = Math.Min(nflag, rflag);
+                MessageBox.Show("待发送内容不能为空！");
+                return;
             }
-            else
-            {
-                if (nflag >= 0)
-                {
-                    iNewline = nflag;
-                }
-                if (rflag >= 0)
-                {
-                    iNewline = rflag;
-                }
-            }
-            if (iNewline < 0)
-            {
-                iNewline = textToSend.Length;
-            }
-            textToSend = textToSend.Substring(0, iNewline) + "\r\n";
-
             int n = 0;
             //16进制发送
             if (checkBoxHexSend.Checked)
@@ -326,10 +304,6 @@ namespace SerialLog
                 comport.Write(buf.ToArray(), 0, buf.Count);
                 //记录发送的字节数
                 n = buf.Count;
-
-                //this.txt_showinfo.Text += "\r\n发送：";
-                //this.txt_showinfo.Text += textToSend;
-
             }
             else//ascii编码直接发送
             {
@@ -337,9 +311,6 @@ namespace SerialLog
                 str0 = textToSend;
                 comport.WriteLine(str0);
                 n = textToSend.Length;
-                //this.txt_showinfo.Text += "\r\n发送：";
-                //this.txt_showinfo.Text += str0;
-
             }
             send_count += n;
             //累加发送字节数
@@ -355,7 +326,7 @@ namespace SerialLog
 
         private void btn_RtxtClear_Click(object sender, EventArgs e)
         {
-            txt_showinfo.Clear();
+            txt_dataReceive.Clear();
         }
 
         private void cb_box_SelectedIndexChanged(object sender, EventArgs e)

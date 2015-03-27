@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSerialPort));
             this.btn_opencom = new System.Windows.Forms.Button();
             this.btn_closecom = new System.Windows.Forms.Button();
-            this.txt_showinfo = new System.Windows.Forms.TextBox();
+            this.txt_dataReceive = new System.Windows.Forms.TextBox();
             this.btnSendData = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBoxHexView = new System.Windows.Forms.CheckBox();
@@ -40,7 +40,7 @@
             this.cb_box = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_SendData = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -74,14 +74,14 @@
             this.btn_closecom.UseVisualStyleBackColor = true;
             this.btn_closecom.Click += new System.EventHandler(this.btn_closecom_Click);
             // 
-            // txt_showinfo
+            // txt_dataReceive
             // 
-            this.txt_showinfo.Location = new System.Drawing.Point(6, 15);
-            this.txt_showinfo.Multiline = true;
-            this.txt_showinfo.Name = "txt_showinfo";
-            this.txt_showinfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_showinfo.Size = new System.Drawing.Size(564, 206);
-            this.txt_showinfo.TabIndex = 21;
+            this.txt_dataReceive.Location = new System.Drawing.Point(6, 15);
+            this.txt_dataReceive.Multiline = true;
+            this.txt_dataReceive.Name = "txt_dataReceive";
+            this.txt_dataReceive.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_dataReceive.Size = new System.Drawing.Size(564, 206);
+            this.txt_dataReceive.TabIndex = 21;
             // 
             // btnSendData
             // 
@@ -154,7 +154,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txt_SendData);
             this.groupBox3.Controls.Add(this.cb_box);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.checkBoxHexSend);
@@ -166,13 +166,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "发送数据：";
             // 
-            // textBox1
+            // txt_SendData
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 46);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(558, 95);
-            this.textBox1.TabIndex = 37;
+            this.txt_SendData.Location = new System.Drawing.Point(9, 46);
+            this.txt_SendData.Multiline = true;
+            this.txt_SendData.Name = "txt_SendData";
+            this.txt_SendData.Size = new System.Drawing.Size(558, 95);
+            this.txt_SendData.TabIndex = 37;
             // 
             // label1
             // 
@@ -185,7 +185,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.txt_showinfo);
+            this.groupBox4.Controls.Add(this.txt_dataReceive);
             this.groupBox4.Controls.Add(this.checkBoxHexView);
             this.groupBox4.Controls.Add(this.btn_RtxtClear);
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
@@ -271,7 +271,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSerialPort";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "串口调试工具";
             this.Load += new System.EventHandler(this.FrmSerialPort_Load);
@@ -289,7 +288,7 @@
 
         private System.Windows.Forms.Button btn_opencom;
         private System.Windows.Forms.Button btn_closecom;
-        private System.Windows.Forms.TextBox txt_showinfo;
+        private System.Windows.Forms.TextBox txt_dataReceive;
         private System.Windows.Forms.Button btnSendData;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox checkBoxHexView;
@@ -306,6 +305,6 @@
         private System.Windows.Forms.Label lblSentCount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSerialPortConfig;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_SendData;
     }
 }

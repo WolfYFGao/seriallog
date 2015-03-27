@@ -26,7 +26,7 @@ namespace SerialLog
             if (ports.Length > 0) {
                 cmbPortName.SelectedIndex = 0;
             }
-            this.cmbBaudRate.SelectedIndex = 0;
+            this.cmbBaudRate.SelectedIndex = this.cmbBaudRate.Items.IndexOf("9600");
             this.cmbParity.SelectedIndex = 0;
             this.cmbDataBits.SelectedIndex = 1;
             this.cmbStopBits.SelectedIndex = 0;
@@ -35,7 +35,7 @@ namespace SerialLog
 
         private void btnSaveConfig_Click(object sender, EventArgs e)
         {
-            Program.serialPortPara.PortName = this.cmbPortName.SelectedItem as string;
+            Program.serialPortPara.PortName = this.cmbPortName.SelectedItem.ToString();
             Debug.WriteLine(this.cmbBaudRate.SelectedItem.ToString());
             Program.serialPortPara.BaudRate = int.Parse(this.cmbBaudRate.SelectedItem.ToString());
             Program.serialPortPara.Print();
